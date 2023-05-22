@@ -1,19 +1,25 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Configuration, OpenAIApi } from "openai";
 import "./Home.css";
+import Spinner from "../common/Loading/Spinner";
 
 const Home = () => {
   const [topic, setTopic] = useState('');
   const [quation, setQuation] = useState('');
   const [result, setResult] = useState('');
   const [prompt, setPrompt] = useState('');
+  const [isLoading, setIsLoading] = useState(false); // New state for loading
 
   const generate = async () => {
     setPrompt(quation + " " + topic);
+    setResult(''); // Reset the result
+    setIsLoading(true); // Set loading state to true
+
+    console.log('Prompt: ', prompt);
 
     try {
       const configuration = new Configuration({
-        apiKey: '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',
+        apiKey: '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',
       });
       const openai = new OpenAIApi(configuration);
       const response = await openai.createCompletion({
@@ -27,10 +33,10 @@ const Home = () => {
       console.log('Response from OpenAI: ', result);
     } catch (error) {
       console.error('Error getting information from OpenAI:', error);
+    } finally {
+      setIsLoading(false); // Set loading state to false after data retrieval
     }
   };
-
-  console.log('Prompt: ', prompt);
 
   return (
     <div className="home container">
@@ -43,14 +49,19 @@ const Home = () => {
           <select id="quationselect" type="text" placeholder="Select" value={quation} onChange={(e) => setQuation(e.target.value)}>
             <option value="">Select</option>
             <option value="Explain about">Explain Topic</option>
-            <option value="Explain how to do research about">How to Do?</option>
+            <option value="How to do research about">How to Do?</option>
           </select>
           <br />
           <button onClick={generate} id="Gbtn" type="button">Generate</button>
         </form>
       </div>
+      
       <div className="container" id="result">
-      {result && <div className="container text-center">{result}</div>}
+        {isLoading ? (
+          <Spinner /> // Display the spinner when isLoading is true
+        ) : (
+          result && <div className="container text-center">{result}</div>
+        )}
       </div>
     </div>
   );
