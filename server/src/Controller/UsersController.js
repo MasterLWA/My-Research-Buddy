@@ -37,8 +37,31 @@ const createUser = async (req, res) => {
     }
 }
 
+//update a user
+const updateUser = async (req, res) => {
+    
+    const {username,Name,passwordHash,email,role} = req.body;
+    
+    const {id} = req.params;
 
-module.exports = {createUser, getUserById, getAllUsers}
+    //check if id is valid
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).send(`No user with id: ${id}`);
+    }   
+
+    const updatedUser = await User.findByIdAndUpdate(
+        {_id: id},
+        {
+            ...req.body,
+        }
+    )
+
+    res.json(updatedUser);
+}
+
+
+
+module.exports = {createUser, getUserById, getAllUsers, updateUser}
 
 
 
