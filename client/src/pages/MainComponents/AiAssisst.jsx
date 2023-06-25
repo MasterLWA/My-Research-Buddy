@@ -1,19 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Configuration, OpenAIApi } from "openai";
-import "./Home.css";
-import Spinner from "../common/Loading/Spinner";
+import "../../Style/Home.css";
+import Spinner from "../../common/Loading/Spinner"
 
-const Home = () => {
+const AiAssisst = () => {
   const [topic, setTopic] = useState("");
   const [quation, setQuation] = useState("");
-  const [result, setResult] = useState("");
-  const [prompt, setPrompt] = useState("");
+  const [result, setResult] = useState(""); 
+  const [prompt, setPrompt] = useState(""); 
   const [isLoading, setIsLoading] = useState(false); // New state for loading
 
+  //create promt
   useEffect(() => {
     setPrompt("You are "+ topic + " expert. " + quation + " " + topic);
   }, [quation, topic]);
+  //end
 
+  // Function to work with OpenAI API
   const generate = async () => {
     setResult(""); // Reset the result
     setIsLoading(true); // Set loading state to true
@@ -22,7 +25,7 @@ const Home = () => {
 
     try {
       const configuration = new Configuration({
-        apiKey: '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',
+        apiKey: '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',
       });
       const openai = new OpenAIApi(configuration);
       const response = await openai.createCompletion({
@@ -40,6 +43,7 @@ const Home = () => {
       setIsLoading(false); // Set loading state to false after data retrieval
     }
   };
+  //end 
 
   return (
     <div className="home container">
@@ -67,14 +71,16 @@ const Home = () => {
             value={quation}
             onChange={(e) => setQuation(e.target.value)}
           >
+            {/*Section input for what user want*/}=
             <option value="">Select</option>
             <option value="Explain about">Explain Topic</option>
             <option value="How to do research about">How to Do?</option>
             <option value="Give Some preview Research papers related to">Research Papers</option>
-            <option value="What are the advantages of">Advantages</option>
-            <option value="What are the disadvantages of">Disadvantages</option>
-            <option value="What are the applications of">Applications</option>
+            <option value="What are the advantages of doing research about">Advantages</option>
+            <option value="What are the disadvantages doing research about">Disadvantages</option>
+            <option value="What are the applications that I can build related to research about">Applications</option>
           </select>
+            {/*End of Selection*/}
           <br />
           <button onClick={generate} id="Gbtn" type="button">
             Generate
@@ -93,4 +99,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default AiAssisst;
