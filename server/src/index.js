@@ -1,12 +1,16 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import dotenv from 'dotenv';
+require('dotenv').config()
+const express = require('express');
+const mongoose = require('mongoose');
+
+// Import the User router
+const userRouter = require('./Router/UsersRoute.js');
+
 
 const app = express();
-// const port = 4000;
+
 
 // Load environment variables from .env file
-dotenv.config();
+//dotenv.config();
 
 
 //middleware
@@ -16,6 +20,9 @@ app.use((req, res, next) => {
     console.log(req.path, req.method);
     next();
 })
+
+// Routes
+app.use(userRouter)
 
 // Connect to the database and start the server
 mongoose
@@ -27,7 +34,7 @@ mongoose
       console.log(`Server started on port ${process.env.PORT}`);
     });
   })
-  
+
   .catch((error) => {
     console.log('Error connecting to the database:', error);
   });
