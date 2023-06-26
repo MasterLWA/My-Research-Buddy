@@ -1,7 +1,6 @@
 const User = require('../Model/UserModel.js');
-// const { default: mongoose, Mongoose, model } = require('mongoose');
-// const { MongoDriverError, MongoServerClosedError } = require('mongodb');
-
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt')
 
 //get all users
 const getAllUsers = async (req, res) => {
@@ -59,9 +58,51 @@ const updateUser = async (req, res) => {
     res.json(updatedUser);
 }
 
+//delete a user
+const deleteUser = async (req, res) => {
+    const {id} = req.params;
+
+    //check if id is valid
+    if(!mongoose.Types.ObjectId.isValid(id)) {
+        return res.status(404).send(`No user with id: ${id}`);
+    }
+    
+    try{
+    await User.findByIdAndRemove(id);
+    res.json({message: "User deleted successfully."});
+    } catch(error){
+        res.status(409).json({ message: error.message });
+    }
+}
 
 
-module.exports = {createUser, getUserById, getAllUsers, updateUser}
+//user Login
+const userLogin = async (req, res) => {
+    
+    const {username, password} = req.body;
+
+        //test username and password come to the frontend
+        console.log(username + password);
+    
+    //check if user is in the database
+    try{
+        const user = await User.findOne({username});
+        
+        //test user comes to the frontend
+        console.log(user);
+    }
+    catch(error){
+        res.status(404).json({ message: error.message });
+    }
+
+    //check password
+
+
+
+}
+
+
+module.exports = {createUser, getUserById, getAllUsers, updateUser, deleteUser, userLogin}
 
 
 
