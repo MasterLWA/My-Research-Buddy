@@ -3,7 +3,8 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import Index from "../pages/Index";
 import AiAssist from "../pages//MainComponents/AiAssisst";
 import Dashboard from "../pages/Dashboard/Dashboard";
-
+import SignUp from "../pages/UserManagement/SignUp";
+import SignIn from "../pages/UserManagement/SignIn";
 
 const RouterApp = () => {
     return (
@@ -22,6 +23,14 @@ const RouterApp = () => {
             {/* Componets */}
             <Route path="/assist" element={<AiAssist />} />
 
+            {/* loging */}
+            <Route path="/login" element={<SignIn />}/>
+
+            {/* Sign Up */}
+            <Route path="/register" element={<SignUp />}/>
+
+            {/* 404 */}
+            <Route path="*" element={<Navigate to='/index' />} />
 
       
       </Routes>
