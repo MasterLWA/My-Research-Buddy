@@ -1,0 +1,62 @@
+#signIn{
+    background-image: url("../../Images/Background/Background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+}
+
+.signInForm{
+    margin-top: 200px;
+    margin-bottom: 150px;
+    background-color: aliceblue;
+    padding: 50px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    height: fit-content;
+    /* From https://css.glass */
+    background: rgba(233, 235, 237, 0.37);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.5px);
+    -webkit-backdrop-filter: blur(7.5px);
+    border: 1px solid rgba(253, 254, 255, 0.4);
+}
+
+.signInForm h1{
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.signInForm input{
+    width: 400px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+.signInForm button{
+    width: 150px;
+    height: 40px;
+    border-radius: 8px;
+    font-size: 16px;
+    background-color: #1E90FF;
+    border: 1px solid #1E90FF;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.signInForm button:hover{
+    background-color: white;
+    color: #1E90FF;
+    border: 2px solid #1E90FF;
+}
