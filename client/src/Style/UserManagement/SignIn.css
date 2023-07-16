@@ -28,9 +28,13 @@
 }
 
 .signInForm h1{
-    font-size: 40px;
+    font-size: 50px;
     font-weight: 600;
     margin-bottom: 25px;
+    color: #1E90FF;
+    /* add outer glow */
+    text-shadow: 0 0 5px #032444;
+
 }
 
 .signInForm input{
@@ -58,5 +62,5 @@
 .signInForm button:hover{
     background-color: white;
     color: #1E90FF;
-    border: 2px solid #1E90FF;
+    border: 1 1 2px solid #1E90FF;
 }

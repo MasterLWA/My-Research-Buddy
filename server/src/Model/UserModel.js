@@ -11,10 +11,17 @@ const userSchema = new schema({
     maxlength: 20,
     trim: true,
   },
-  Name: {
+  firstName: {
     type: String,
     required: true,
     minlength: 3,
+    maxlength: 100,
+    trim: true,
+    },
+  lastName: {
+    type: String,
+    required: true,
+    minlength: 2,
     maxlength: 100,
     trim: true,
     },
