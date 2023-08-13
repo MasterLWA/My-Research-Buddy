@@ -1,5 +1,6 @@
 import * as Icon from 'react-bootstrap-icons';
 import ResearchList from '../../Components/ResearchList';
+import SideNav from '../../Components/SideNav';
 const Dashboard = () => {
     return (
         <div className={"container-fluid"}>
@@ -13,8 +14,8 @@ const Dashboard = () => {
                     </div>
 
                     {/* Buttons to navigate other functions */}
-                    <div className={"col-md-4 border border-dark rounded content-justify-center text-center"}>
-                            <p>this is navigation to other functions</p>
+                    <div className={"col-md-4"}>
+                            <SideNav />
                     </div> 
                 </div>
             </div>
