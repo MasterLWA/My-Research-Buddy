@@ -1,0 +1,37 @@
+#signUp{
+    background-image: url("../../Images/Background/Background.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+}
+
+#signUp form{
+    
+    background: rgba(233, 235, 237, 0.37);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(7.5px);
+    -webkit-backdrop-filter: blur(7.5px);
+    border: 1px solid rgba(253, 254, 255, 0.4);
+
+    margin-top: 100px;
+    margin-bottom: 150px;
+}
+
+#signUp form h1{
+    font-size: 50px;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #1E90FF;
+    /* add outer glow */
+    text-shadow: 0 0 5px #032444;
+}
+
+#signUp form input{
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 16px;
+}

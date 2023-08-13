@@ -1,7 +1,9 @@
+import React from "react";
+import "../../Style/UserManagement/SignUp.css";
 
 const SignUp = () => {
     return(
-        <div className="signUp container-fluid">
+        <div className="signUp container-fluid" id="signUp">
           <form style={{textAlign: "center"}}>
                 <h1>Sign Up</h1>
                 <input type="text" placeholder="Username" className="col-6" /> <br/>
