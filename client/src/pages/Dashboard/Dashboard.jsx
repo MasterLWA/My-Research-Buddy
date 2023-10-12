@@ -1,4 +1,3 @@
-import * as Icon from 'react-bootstrap-icons';
 import ResearchList from '../../Components/ResearchList';
 import SideNav from '../../Components/SideNav';
 const Dashboard = () => {
